@@ -181,10 +181,36 @@
             </select>
         </div>
 
+        <div class="buttonSection">
+            <div class="button1">
+                <button class="roundButton" id="start">Start</button>
+            </div>
+            <div class="button2">
+                <button class="roundButton" id="cancel">Cancel</button>
+            </div>
+        </div>
+
     </div>
 
     <script>
+        document.getElementById("start").addEventListener('click', getEndTime);
 
+        function startTimer() {
+            timer = setInterval(function () {console.log("Hi")}, 1000);
+        }
+
+        function getEndTime() {
+            var dt = new Date();
+
+            var hours = parseInt(document.getElementById("hours").value);
+            var minutes = parseInt(document.getElementById("minutes").value);
+            var seconds = parseInt(document.getElementById("seconds").value);
+
+            dt.setHours(dt.getHours() + hours);
+            dt.setMinutes(dt.getMinutes() + minutes);
+            dt.setSeconds(dt.getSeconds() + seconds);
+            return dt;
+        }
     </script>
 
 </body>
