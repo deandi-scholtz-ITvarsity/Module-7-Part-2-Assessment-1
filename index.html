@@ -197,7 +197,8 @@
         var startTime;
         var endTime;
         var origTimePeriod;
-        var newTimePeriod
+        var newTimePeriod;
+        var timer;
 
         function startTimer() {
 
@@ -214,7 +215,15 @@
             var timeLeft = msToTime(newTimePeriod);
             document.getElementById("clock").innerHTML = `<p>${timeLeft["hours"]}h ${timeLeft["minutes"]}m ${timeLeft["seconds"]}s </p>`;
 
+            var newHeight = Math.floor(newTimePeriod / origTimePeriod * 100) * 3;
+            document.getElementById("progressBar").setAttribute("height", newHeight);
+
             newTimePeriod -= 1000;
+
+            if (newTimePeriod < 0) {
+                clearInterval(timer);
+                document.getElementById("clock").innerHTML = "Complete!";
+            }
         }
 
         function msToTime(milliseconds) {
