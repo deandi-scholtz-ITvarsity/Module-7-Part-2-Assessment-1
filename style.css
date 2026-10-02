@@ -45,3 +45,15 @@ p {
     float: right;
     width: 49%;
 }
+
+.selector {
+    background-color: white;
+    padding: .8rem 1.4rem .9rem .8rem;
+    width: 30%;
+    border-radius: .5rem;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    font-size: 1rem;
+    text-align: center;
+}
