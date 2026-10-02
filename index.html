@@ -194,14 +194,17 @@
 
     <script>
         document.getElementById("start").addEventListener('click', startTimer);
+        document.getElementById("cancel").addEventListener('click', cancelledButtonPressed);
+
         var startTime;
         var endTime;
         var origTimePeriod;
         var newTimePeriod;
         var timer;
+        var cancelled = false;
 
         function startTimer() {
-
+            cancelled = false;
             startTime = new Date();
             endTime = getEndTime();
 
@@ -220,10 +223,14 @@
 
             newTimePeriod -= 1000;
 
-            if (newTimePeriod < 0) {
+            if (newTimePeriod < 0 || cancelled) {
                 clearInterval(timer);
                 document.getElementById("clock").innerHTML = "Complete!";
             }
+        }
+
+        function cancelledButtonPressed() {
+            cancelled = true;
         }
 
         function msToTime(milliseconds) {
